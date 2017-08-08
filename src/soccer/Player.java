@@ -13,6 +13,18 @@ public class Player {
         "Zlatan Ibrahimovic",
         "Andres Iniesta",
         "Lionel Messi",
-        "Christiano Ronaldo"
+        "Christiano Ronaldo",
+        "Xavi",
+        "Thiago Silva",
+        "Bastian Schweinsteiger",
+        "Luis Suarez",
+        "Sergio Ramos",
+        "Vincent Kompany",
+        "Marco Reus",
+        "Franck Ribery",
+        "Thomas Muller",
+        "Karim Benzema",
+        "Fernandinho",
+        "Angel Di Maria"
     };
 }
