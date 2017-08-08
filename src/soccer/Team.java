@@ -20,7 +20,7 @@ public class Team{
         }
 
             System.out.println("Greens: \n"+Greens);
-            System.out.println("Reds:\n"+Reds.clone());
+            System.out.println("Reds:\n"+Reds);
     }
     
 }
