@@ -9,6 +9,7 @@ public class Team{
         ArrayList Yellow = new ArrayList();
         
         
+        
     public void setTeams(){
 
         
@@ -34,6 +35,5 @@ public class Team{
             System.out.println("Reds:\n"+Reds);
             System.out.println("Blue:\n"+Blue);
             System.out.println("Yellow:\n"+Yellow);
-    }
-    
+    } 
 }
