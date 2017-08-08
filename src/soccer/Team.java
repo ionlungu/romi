@@ -2,15 +2,15 @@ package soccer;
 import java.util.ArrayList;
 
 public class Team{
-        Player pl = new Player();
-        ArrayList Greens = new ArrayList();
-        ArrayList Reds = new ArrayList();
-        ArrayList Blue = new ArrayList();
-        ArrayList Yellow = new ArrayList();
-        
-        
-        
-    public void setTeams(){
+
+    Player pl = new Player();
+
+    static ArrayList Greens = new ArrayList();
+    static ArrayList Reds = new ArrayList();
+    static ArrayList Blue = new ArrayList();
+    static ArrayList Yellow = new ArrayList();
+            
+    public void displayTeams(){
 
         
         for (int i = 0 ;i<pl.pNames.length/4;i++)
