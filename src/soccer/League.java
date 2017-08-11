@@ -63,21 +63,21 @@ public class League {
             System.out.println("Reds:\n"+Reds);
             System.out.println("Blue:\n"+Blue);
             System.out.println("Yellow:\n"+Yellow);
-     
-            for (int i = 0; i < 6 ; i++){
-            ranTeam = t1.teamsList[new Random().nextInt(t1.teamsList.length)];    
-            if(ranTeam.equals("Greens"))player = (String)Greens.get(i);
-            if(ranTeam.equals("Reds"))player = (String)Reds.get(i);
-            if(ranTeam.equals("Blue"))player = (String)Blue.get(i);
-            if(ranTeam.equals("Yellow"))player = (String)Yellow.get(i);
-        }
-   
-      Goal gTime = new Goal();
-      Random ranTime= new Random();
-      
-      System.out.println("Goal scored after " + gTime.ranTime((ranTime.nextInt(90) + 1.0)/1.25)
-              + " mins by " + player +  " of the " + ranTeam+" team");
+            
+        Random ranTime= new Random();
+        double goalTime = 0.0;
         
+            for (int i = 0; i < 6 ; i++){
+                ranTeam = t1.teamsList[new Random().nextInt(t1.teamsList.length)];    
+                if(ranTeam.equals("Greens"))player = (String)Greens.get(i);
+                if(ranTeam.equals("Reds"))player = (String)Reds.get(i);
+                if(ranTeam.equals("Blue"))player = (String)Blue.get(i);
+                if(ranTeam.equals("Yellow"))player = (String)Yellow.get(i);
+            goalTime = (ranTime.nextInt(90) + 1.0)/1.25;
+            System.out.println("Goal scored after " + goalTime
+              + " mins by " + player +  " of the " + ranTeam+" team");
+
+        }
         
 
     }  
