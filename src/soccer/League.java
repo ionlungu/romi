@@ -1,4 +1,5 @@
 package soccer;
+
 import java.util.ArrayList;
 import java.util.Random;
 public class League {
@@ -9,14 +10,22 @@ public class League {
         ArrayList Blue = new ArrayList();
         ArrayList Yellow = new ArrayList();
         String player=null;
-        //String team=null;
         String ranTeam=null;
         
-        Team t1 = new Team();
-        t1.teamsList = new String[] {"Greens","Reds","Blue","Yellow"};
+        Team allTeams = new Team();
+        allTeams.teamsList = new String[] {"Greens","Reds","Blue","Yellow"};
+        
+        Team team = new Team();
+        //set Visitors team
+        team.teamVisitors = allTeams.teamsList[new Random().nextInt(allTeams.teamsList.length)];
+        //set Locals team
+        team.teamLocals = allTeams.teamsList[new Random().nextInt(allTeams.teamsList.length)];
+        //run again if Visitors name is same as Locals'
+        while(team.teamLocals.equalsIgnoreCase(team.teamVisitors))
+        team.teamLocals = allTeams.teamsList[new Random().nextInt(allTeams.teamsList.length)];
         
         Player pl = new Player();
-        pl.pNames = new String []{
+        pl.pNames = new String []{//all football players divisible by 4
            "Juan Mata",
            "Gerard Pique",
            "Iker Casillas",
@@ -43,19 +52,19 @@ public class League {
            "Angel Di Maria"
         };
     
-        for (int i = 0 ;i<pl.pNames.length/4;i++){
+        for (int i = 0 ;i<pl.pNames.length/4;i++){//set Greens team
             Greens.add(pl.pNames[i]);
         }
         
-        for (int i =pl.pNames.length/4; i <pl.pNames.length/2;i++){
+        for (int i =pl.pNames.length/4; i <pl.pNames.length/2;i++){//set Reds team
             Reds.add(pl.pNames[i]);
         }
         
-        for(int i = pl.pNames.length/2; i < pl.pNames.length - 6; i++){
+        for(int i = pl.pNames.length/2; i < pl.pNames.length - 6; i++){//set Blue team
             Blue.add(pl.pNames[i]);
         }
         
-        for(int i = pl.pNames.length - 6; i < pl.pNames.length; i++){
+        for(int i = pl.pNames.length - 6; i < pl.pNames.length; i++){//set Yellow team
             Yellow.add(pl.pNames[i]);
         }
 
@@ -67,18 +76,32 @@ public class League {
         Random ranTime= new Random();
         double goalTime = 0.0;
         
+        System.out.println("\n=====================================================\n"
+                + "Game: Visitors "+team.teamVisitors+" vs Locals "+team.teamLocals+
+                            "\n=====================================================\n");
+        
             for (int i = 0; i < 6 ; i++){
-                ranTeam = t1.teamsList[new Random().nextInt(t1.teamsList.length)];    
-                if(ranTeam.equals("Greens"))player = (String)Greens.get(i);
-                if(ranTeam.equals("Reds"))player = (String)Reds.get(i);
-                if(ranTeam.equals("Blue"))player = (String)Blue.get(i);
-                if(ranTeam.equals("Yellow"))player = (String)Yellow.get(i);
+                   
+                if(team.teamVisitors.equals("Greens"))player = (String)Greens.get(i);
+                if(team.teamVisitors.equals("Reds"))player = (String)Reds.get(i);
+                if(team.teamVisitors.equals("Blue"))player = (String)Blue.get(i);
+                if(team.teamVisitors.equals("Yellow"))player = (String)Yellow.get(i);
+                
+                if(team.teamLocals.equals("Greens"))player = (String)Greens.get(i);
+                if(team.teamLocals.equals("Reds"))player = (String)Reds.get(i);
+                if(team.teamLocals.equals("Blue"))player = (String)Blue.get(i);
+                if(team.teamLocals.equals("Yellow"))player = (String)Yellow.get(i);
+                
+                String[] teamLvsV = new String[]{team.teamVisitors,team.teamLocals};
+                ranTeam = teamLvsV[new Random().nextInt(teamLvsV.length)];
+                
             goalTime = (ranTime.nextInt(90) + 1.0)/1.25;
+            
             System.out.println("Goal scored after " + goalTime
               + " mins by " + player +  " of the " + ranTeam+" team");
 
         }
         
-
+            
     }  
 }
