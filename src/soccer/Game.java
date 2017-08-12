@@ -3,12 +3,12 @@ package soccer;
 import java.util.Random;
 
 public class Game {
-    int score;
-        public int ranScore(int score){
+    int scored;
+        public int ranScore(int scored){
         //random score
         Random ranScore = new Random();
-        score = ranScore.nextInt(6) + 1;
-        return this.score;
+        scored = ranScore.nextInt(6) + 1;
+        return this.scored;
     }
     public void scoreGoal(){
   

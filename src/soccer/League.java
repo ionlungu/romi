@@ -67,41 +67,58 @@ public class League {
         for(int i = pl.pNames.length - 6; i < pl.pNames.length; i++){//set Yellow team
             Yellow.add(pl.pNames[i]);
         }
-
-            System.out.println("Greens:\n"+Greens);
-            System.out.println("Reds:\n"+Reds);
-            System.out.println("Blue:\n"+Blue);
-            System.out.println("Yellow:\n"+Yellow);
+            
+            System.out.println("\n=====================================================\n");
+            System.out.println("Greens team:\n"+Greens);
+            System.out.println("\n=====================================================\n");
+            System.out.println("Reds team:\n"+Reds);
+            System.out.println("\n=====================================================\n");
+            System.out.println("Blue team:\n"+Blue);
+            System.out.println("\n=====================================================\n");
+            System.out.println("Yellow team:\n"+Yellow);
+            System.out.println("\n=====================================================\n");
             
         Random ranTime= new Random();
         double goalTime = 0.0;
+        
+        Game aGame = new Game();
+        Random ranScore = new Random();
+        
+        int maxGameTime = 92;
+        double minGameTime = 0.0;
+        
+        Goal aGoal = new Goal();
+        aGoal.scoredGoals = 0;
         
         System.out.println("\n=====================================================\n"
                 + "Game: Visitors "+team.teamVisitors+" vs Locals "+team.teamLocals+
                             "\n=====================================================\n");
         
-            for (int i = 0; i < 6 ; i++){
-                   
-                if(team.teamVisitors.equals("Greens"))player = (String)Greens.get(i);
-                if(team.teamVisitors.equals("Reds"))player = (String)Reds.get(i);
-                if(team.teamVisitors.equals("Blue"))player = (String)Blue.get(i);
-                if(team.teamVisitors.equals("Yellow"))player = (String)Yellow.get(i);
+            do {
+                int goalScorer = ranScore.nextInt(6) + 0;
+                if(team.teamVisitors.equals("Greens")||
+                        team.teamLocals.equals("Greens"))player = (String)Greens.get(goalScorer);
+                if(team.teamVisitors.equals("Reds")||
+                        team.teamLocals.equals("Reds"))player = (String)Reds.get(goalScorer);
+                if(team.teamVisitors.equals("Blue")||
+                        team.teamLocals.equals("Blue"))player = (String)Blue.get(goalScorer);
+                if(team.teamVisitors.equals("Yellow")||
+                        team.teamLocals.equals("Yellow"))player = (String)Yellow.get(goalScorer);
                 
-                if(team.teamLocals.equals("Greens"))player = (String)Greens.get(i);
-                if(team.teamLocals.equals("Reds"))player = (String)Reds.get(i);
-                if(team.teamLocals.equals("Blue"))player = (String)Blue.get(i);
-                if(team.teamLocals.equals("Yellow"))player = (String)Yellow.get(i);
+                String[] teamLvsV = new String[]{team.teamVisitors,team.teamLocals};//put the 2 teams in an array
+                ranTeam = teamLvsV[new Random().nextInt(teamLvsV.length)];//random select scoring team
                 
-                String[] teamLvsV = new String[]{team.teamVisitors,team.teamLocals};
-                ranTeam = teamLvsV[new Random().nextInt(teamLvsV.length)];
-                
-            goalTime = (ranTime.nextInt(90) + 1.0)/1.25;
+            goalTime = (ranTime.nextInt(maxGameTime) + minGameTime)/1.25;//setting random goal time
+            minGameTime = goalTime;//increasing minimum game time
             
-            System.out.println("Goal scored after " + goalTime
-              + " mins by " + player +  " of the " + ranTeam+" team");
-
-        }
-        
-            
+            aGame.scored = ranScore.nextInt(2) + 0;
+            if(aGame.scored>0 && goalTime<maxGameTime){//sout only if there is a goal
+                aGoal.scoredGoals++;
+                System.out.println(aGame.scored+" goal scored after " + goalTime
+                  + " mins by " + player +  " of the " + ranTeam+" team");
+            }
+        }while(goalTime<maxGameTime && minGameTime<=maxGameTime);
+        if(aGoal.scoredGoals<1)System.out.println("No goals were scored");
+        else{System.out.println("Total goals scored: "+aGoal.scoredGoals);}
     }  
 }
