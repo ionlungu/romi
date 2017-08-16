@@ -1,16 +1,14 @@
 package soccer;
 
-import java.util.Random;
+import java.util.ArrayList;
 
 public class Game {
-    int scored;
-        public int ranScore(int scored){
-        //random score
-        Random ranScore = new Random();
-        scored = ranScore.nextInt(6) + 1;
-        return this.scored;
-    }
-    public void scoreGoal(){
-  
+
+    public Team visitorTeam;
+    public Team localTeam;
+    public ArrayList<Goal> goals = new ArrayList<>(5);
+
+    public void scoreGoal(Goal goal) {
+        goals.add(goal);
     }
 }

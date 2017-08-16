@@ -1,13 +1,10 @@
 package soccer;
 
+import java.util.ArrayList;
+
 public class Team{
-    
-    public String[] teamsList;
-    public String teamVisitors;
-    public String teamLocals;
-    
-    public Team(){
-        teamVisitors = new String();
-        teamLocals = new String();
-    }
+
+    public String teamName;
+    public ArrayList<Player> players = new ArrayList<>();
+
 }

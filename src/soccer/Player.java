@@ -1,6 +1,12 @@
 package soccer;
 
 public class Player {
-    public String[] pNames;
+    public String pName;
 
+    public Player(){
+    }
+
+    public Player(String pName) {
+        this.pName = pName;
+    }
 }
